@@ -1,11 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { NavigationScreenProp } from 'react-navigation';
 
-interface Props {}
+interface Props {
+    navigation: NavigationScreenProp<any, any>;
+}
 
 interface State {
-    Username: string;
-    Password: string;
+    username: string;
+    password: string;
     loggedin: boolean;
     data: string;
 }
@@ -16,8 +19,8 @@ export default class Login extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {
-            Username: '',
-            Password: '',
+            username: '',
+            password: '',
             loggedin: false,
             data: '',
         };
@@ -33,8 +36,8 @@ export default class Login extends React.Component<Props, State> {
                         autoCapitalize="none"
                         autoCorrect={false}
                         keyboardType="email-address"
-                        onChangeText={Username => this.setState({ Username })}
-                        value={this.state.Username}
+                        onChangeText={username => this.setState({ username })}
+                        value={this.state.username}
                     />
                 </View>
                 <View style={{ flexDirection: 'row' }}>
@@ -43,8 +46,8 @@ export default class Login extends React.Component<Props, State> {
                         autoCapitalize="none"
                         autoCorrect={false}
                         keyboardType="default"
-                        onChangeText={Password => this.setState({ Password })}
-                        value={this.state.Password}
+                        onChangeText={password => this.setState({ password })}
+                        value={this.state.password}
                     />
                 </View>
                 <Button title="Login" onPress={this.login} />
@@ -62,8 +65,8 @@ export default class Login extends React.Component<Props, State> {
             headers,
             method: 'POST',
             body: JSON.stringify({
-                Username: this.state.Username,
-                Password: this.state.Password,
+                Username: this.state.username,
+                Password: this.state.password,
             }),
         }) //parses the json data from the response of the server
             .then(response => response.json())
@@ -73,6 +76,7 @@ export default class Login extends React.Component<Props, State> {
                     //the component is rendered when state is changed
                     this.setState({ loggedin: true });
                     this.setState({ data: 'success' });
+                    this.props.navigation.navigate('Profile');
                 }
                 if (responseJson.success === false) {
                     this.setState({ loggedin: false });
