@@ -1,8 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
-export default class App extends Component {
-    constructor(props) {
+interface Props {}
+
+interface State {
+    Username: string;
+    Password: string;
+    loggedin: boolean;
+    data: string;
+}
+export default class Login extends React.Component<Props, State> {
+    static navigationOptions = {
+        title: 'Welcome',
+    };
+    constructor(props: Props) {
         super(props);
         this.state = {
             Username: '',
@@ -23,7 +34,7 @@ export default class App extends Component {
                         autoCorrect={false}
                         keyboardType="email-address"
                         onChangeText={Username => this.setState({ Username })}
-                        value={this.state.text}
+                        value={this.state.Username}
                     />
                 </View>
                 <View style={{ flexDirection: 'row' }}>
@@ -33,7 +44,7 @@ export default class App extends Component {
                         autoCorrect={false}
                         keyboardType="default"
                         onChangeText={Password => this.setState({ Password })}
-                        value={this.state.text}
+                        value={this.state.Password}
                     />
                 </View>
                 <Button title="Login" onPress={this.login} />
