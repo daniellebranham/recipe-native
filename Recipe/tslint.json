@@ -1,0 +1,50 @@
+{
+    "extends": [
+        "tslint:recommended",
+        "tslint:latest",
+        "tslint-config-standard",
+        "tslint-react",
+        "tslint-react-native",
+        "tslint-config-airbnb",
+        "tslint-config-prettier"
+    ],
+    "rules": {
+        "arrow-parens": true,
+        "curly": true,
+        "no-var-requires": false,
+        "no-string-literal": false,
+        "no-console": [true],
+        "max-classes-per-file": [true, 50],
+        "quotemark": [true, "single", "jsx-double", "avoid-escape"],
+        "object-literal-sort-keys": false,
+        "ordered-imports": true,
+        "no-submodule-imports": false,
+        "interface-name": [true, "never-prefix"],
+        "no-return-await": false,
+        "trailing-comma": true,
+        "whitespace": true,
+        "indent": [true, "spaces", 4],
+        "max-line-length": [true, 120],
+        "jsx-no-lambda": false,
+        "jsx-self-close": true,
+        "arrow-return-shorthand": true,
+        "jsx-no-string-ref": false,
+        "no-unused-styles": true,
+        "react-unused-props-and-state": true,
+        "no-floating-promises": false,
+        "jsx-wrap-multiline": true,
+        "strict-type-predicates": false,
+        "no-unnecessary-type-assertion": false,
+        "variable-name": false,
+        "import-name": false,
+        "prefer-template": false,
+        "object-shorthand-properties-first": false,
+        "prefer-array-literal": false,
+        "no-parameter-reassignment": false,
+        "no-increment-decrement": false
+    },
+    "jsRules": {
+        "curly": true
+    },
+    "rulesDirectory": ["node_modules/tslint-microsoft-contrib"]
+}
